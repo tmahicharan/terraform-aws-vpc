@@ -1,52 +1,53 @@
-# Terraform AWS VPC
+# terraform-aws-vpc
 
-This module creates the following resources.
+## Overview
 
-* VPC
-* IGW
-* 2 Public subnets in us-east-1a and us-east-1b AZ
-* 2 Private subnets in us-east-1a and us-east-1b AZ
-* 2 Database subnets in us-east-1a and us-east-1b AZ
-* Public Route table
-* Private Route table
-* Database Route table
-* EIP for NAT
-* NAT Gateway in public subnet 1a az
-* IGW route is added to public route table
-* NAT gateway route to private and database route tables
-* Route table association with subnets
-* VPC to default VPC peering
-* Public route table to default VPC route
-* Default VPC main route table to created VPC route
+Reusable Terraform configuration for creating AWS VPC networking resources.
 
-### Inputs
-* vpc_cidr - (Required). User must supply the CIDR for VPC.
-* project_name - (Required). User must supply the project name.
-* env_name - (Required). User must supply the environment name.
-* vpc_tags - (Required). User must supply the vpc_tags.
-* ig - (Required). User must supply the internet gateway id.
-* cidr_block - (Required). User must supply the CIDR block for the VPC.
-* project - (Required). User must supply the project name.
-* environment - (Required). User must supply the environment name.
-* vpc_tags - (Optional). User can supply the tags for the VPC.
-* ig - (Optional). User can supply the tags for the Internet Gateway.
-* public_subnet - (Required). User must supply the list of public subnet CIDR blocks.
-* public_subnet_tags - (Optional). User can supply the tags for the public subnets.
-* private_subnet - (Required). User must supply the list of private subnet CIDR blocks.
-* private_subnet_tags - (Optional). User can supply the tags for the private subnets.
-* database_subnet - (Required). User must supply the list of database subnet CIDR blocks.
-* database_subnet_tags - (Optional). User can supply the tags for the database subnets.
-* public_route_table - (Optional). User can supply the tags for the public route table.
-* private_route_table - (Optional). User can supply the tags for the private route table.
-* database_route_table - (Optional). User can supply the tags for the database route table.
-* nat_tags - (Optional). User can supply the tags for the NAT Gateway.
-* elastic_ipe - (Optional). User can supply the tags for the Elastic IP.
-* peering - (Optional). User can supply the tags for the VPC Peering Connection.
-* is_peering_required - (Optional). User can specify whether VPC peering should be created. Default value is `true`.
 
-### outputs
+## Key Contents
 
-* vpcid - The ID of the VPC created by this module.
-* public_subnet_id - The list of IDs of the public subnets.
-* private_subnet_ids - The list of IDs of the private subnets.
-* database_subnet_ids - The list of IDs of the database subnets.
+The following file list is generated from the current local repository snapshot. It excludes common dependency folders and files that appear to contain credentials or private keys.
+
+```text
+data.tf
+locals.tf
+outputs.tf
+peering.tf
+readme.MD
+variables.tf
+vpc.tf
+```
+
+## Technologies
+
+Terraform, AWS, VPC
+
+## Getting Started
+
+1. Clone the repository or open the project in your preferred editor.
+2. Review the configuration and project files to understand the intended workflow.
+3. Install the tools required by the files in this repository.
+4. Configure environment-specific values using your own settings.
+5. Test changes in a development or sandbox environment before using them elsewhere.
+
+Specific commands depend on the actual configuration in this repository. Check its scripts, manifests, and configuration files before running deployment or infrastructure commands.
+
+## Suggested Validation
+
+These checks are suggestions based on the detected files and technologies. Adjust paths and options to the actual project, and review commands before running them.
+
+- Review the Terraform configuration and required provider versions.
+- Run `terraform fmt -check` from the relevant module directory.
+- Run `terraform init -backend=false` followed by `terraform validate` where the module supports it.
+
+## Security Notes
+
+- Never commit passwords, access keys, tokens, private keys, or real environment files.
+- Review configuration files for account IDs, resource names, and environment-specific values before sharing or deploying.
+- For infrastructure and deployment projects, review potential costs and permissions before applying changes.
+- Treat scripts that delete, modify, or provision resources with care.
+
+## Disclaimer
+
+This repository is provided for learning and demonstration. Validate the configuration for your own environment before using it in production.
