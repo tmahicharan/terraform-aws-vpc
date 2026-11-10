@@ -8,7 +8,7 @@ resource "aws_vpc" "main" {
     var.vpc_tags,
     local.common_tags,
     {
-        Name= "${local.common_name}-vpc"
+        Name= "vpc"
     }
   )
 }
@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "gw" {
     var.ig,
     local.common_tags,
     {
-        Name= "${local.common_name}-vpc"
+        Name= "internet-gateway"
     }
   )
 }
